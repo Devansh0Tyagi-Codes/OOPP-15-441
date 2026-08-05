@@ -1,32 +1,97 @@
-#include <iostream>
+// #include <iostream>
+// using namespace std;
+
+// class complex{
+// private:
+
+//     int real,img;
+// public:
+
+// void input (){
+//     cin >> real >>img;
+// }
+// void show (){
+//     cout << real;
+//     if (img>=0){
+//         cout <<" + "<<img<<"i"<<endl;
+//     }
+//     else{
+//         cout <<img<<" i"<<endl;
+//     }
+// }
+
+// };
+
+// int main (){
+//     complex c1,c2;
+//     c1.input();
+//     c2.input();
+//     c1.show();
+//     c2.show();
+// }
+
+#include <bits/stdc++.h>
+
 using namespace std;
 
-class complex{
-private:
+class Complex
+{
+    float real, img;
 
-    int real,img;
 public:
-
-
-void input (){
-    cin >> real >>img;
-}
-void show (){
-    cout << real;
-    if (img>=0){
-        cout <<" + "<<img<<"i"<<endl;
+    void input()
+    {
+        cout << "Enter the real part : ";
+        cin >> real;
+        cout << "Enter the imaginary part : ";
+        cin >> img;
     }
-    else{
-        cout <<img<<" i"<<endl;
-    }
-}
 
+    Complex add(Complex &c1, Complex &c2)
+    {
+        Complex result;
+
+        result.real = c1.real + c2.real;
+        result.img = c1.img + c2.img;
+
+        return result;
+    }
+
+    Complex add(Complex &c)
+    {
+        Complex result;
+
+        result.real = real + c.real;
+        result.img = img + c.img;
+
+        return result;
+    }
+
+    void display()
+    {
+
+        cout << real;
+        if (img >= 0)
+        {
+            cout << "+" << img << "i" << endl;
+        }
+        else
+        {
+            cout << img << "i" << endl;
+        }
+    }
 };
 
-int main (){
-    complex c1,c2;
+int main()
+{
+
+    Complex c1, c2, result1, result2;
     c1.input();
     c2.input();
-    c1.show();
-    c2.show();
+
+    result1 = result1.add(c1, c2);
+    result2 = c1.add(c2);
+
+    result1.display();
+    result2.display();
 }
