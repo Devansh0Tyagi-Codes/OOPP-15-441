@@ -1,47 +1,44 @@
 #include <iostream>
+
 using namespace std;
 
-class point
+class Coordinates
 {
-    int x, y;
+    int a, b;
 
 public:
-    point(int x = 0, int y = 0) : x{x}, y{y}
+    Coordinates(int a = 0, int b = 0) : a{a},
+                                        b{b}
     {
     }
 
-    void show()
+    void display()
     {
-        cout << x << "," << y << endl;
+        cout << a << ", " << b << endl;
     }
 
-    friend point operator+(point, point);
+    friend Coordinates operator+(Coordinates, Coordinates);
 };
 
-point operator+(point t1, point t2)
+Coordinates operator+(Coordinates c1, Coordinates c2)
 {
-    return point(t1.x + t2.x, t1.y + t2.y);
-}
-ostream &operator<<(ostream &os, point t)
-{
-    return point (x+t.x,y+t.y);
-
-};
-
-{
-    os << t.x << "," << t.y << endl;
-    return os;
+    return Coordinates(c1.a + c2.a, c1.b + c2.b);
 }
 
 int main()
 {
-    point p(2, 5), q(-5, 4);
+    Coordinates point1(12, 6), point2(-5, 7);
 
-    point r = p + q;
+    Coordinates result = point1 + point2;
 
-    p.show();
-    q.show();
-    r.show();
+    cout << "First Point: ";
+    point1.display();
+
+    cout << "Second Point: ";
+    point2.display();
+
+    cout << "Sum of Points: ";
+    result.display();
 
     return 0;
 }

@@ -12,10 +12,7 @@ public:
     {
     }
 
-    void display()
-    {
-        cout << a << ", " << b << endl;
-    }
+    friend ostream &operator<<(ostream &os, Coordinates c);
 
     Coordinates operator+(Coordinates c)
     {
@@ -23,20 +20,21 @@ public:
     }
 };
 
+ostream &operator<<(ostream &os, Coordinates c)
+{
+    os << c.a << ", " << c.b << endl;
+    return os;
+}
+
 int main()
 {
     Coordinates point1(12, 5), point2(-5, 7);
 
     Coordinates result = point1 + point2;
 
-    cout << "First Point: ";
-    point1.display();
-
-    cout << "Second Point: ";
-    point2.display();
-
-    cout << "Sum of Points: ";
-    result.display();
+    cout << "First Point: " << point1;
+    cout << "Second Point: " << point2;
+    cout << "Sum of Points: " << result;
 
     return 0;
 }
