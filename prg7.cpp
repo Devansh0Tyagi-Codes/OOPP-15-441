@@ -1,45 +1,38 @@
 #include <iostream>
 using namespace std;
 
-class Complex
+class Student
 {
-    int real, imag;
+private:
+    int marks;
 
 public:
-    Complex(int r, int i) : real{r},
-                            imag{i}
+    static int count;
+
+    Student(int m)
     {
+        marks = m;
+        count++;
     }
 
-    Complex operator-()
-    {
-        return Complex(real, -imag);
-    }
-
-    Complex operator+(Complex c)
-    {
-        return Complex(real + c.real, imag + c.imag);
-    }
-
-    void display()
-    {
-        cout << real << " + " << imag << "i" << endl;
-    }
+    friend void display(Student s);
 };
+
+int Student::count = 0;
+
+void display(Student s)
+{
+    cout << "Marks: " << s.marks << endl;
+}
 
 int main()
 {
-    Complex c1(3, 4);
-    Complex c2(2, 5);
+    Student s1(80), s2(90);
 
-    Complex c3 = c1 + c2;
-    Complex c4 = -c1;
+    display(s1);
+    display(s2);
 
-    cout << "Addition: ";
-    c3.display();
-
-    cout << "Unary -: ";
-    c4.display();
+    cout << "Total Students: " << Student::count << endl;
 
     return 0;
 }
